@@ -1,0 +1,2 @@
+module Public::AnimalsHelper
+end

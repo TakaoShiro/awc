@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new,:create,:destroy]
   end
   
-  namespace :public do
+  scope module: :public do
     root to: "homes#top"
     resources :rooms, only: [:show,:create]
     resources :customers, only: [:index,:show,:edit,:update]
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get "customers/withdraw"
     resources :sessions, only: [:new,:create,:destroy]
     resources :registrations, only: [:new,:create]
-    resources :animals, only: [:index,:show]
+    resources :animals, only: [:index,:show,:edit,:create,:update]
     get "homes/about"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

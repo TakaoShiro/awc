@@ -1,0 +1,61 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <%#= link_to image_tag("、.jpg"),root_path, class: 'btn btn-info pull-left ml-2 "style="width:250px;height:300px' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <% if customer_signed_in? %>
+        <h5 class=" text-light">
+          ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！
+        </h5>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "里親募集一覧", animals_path, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "ユーザー一覧", customers_path, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to "投稿", animals_path, method: :POST, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+        </ul>
+        <% else %>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "About", homes_about_path, class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "里親募集一覧", animals_path, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+
+
+        <li class="nav-item">
+          <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "管理者",  new_admin_session_path, class: 'nav-link text-light btn btn-info ml-5 rounded-circle p-0" style="width:2rem;height:2rem;' %>
+        </li>
+        <% end %>
+        </ul>
+      </div>
+      <ul class="navbar-nav mr-auto">
+      <!--%= render "layouts/serach" %-->
+      </ul>
+  </nav>
+</header>

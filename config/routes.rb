@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
-}
-  
+}, path: "public"
+
   namespace :admin do
     root to: "homes#top"
     resources :sessions, only: [:new,:create,:destroy]

@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <% if customer_signed_in? %>
         <h5 class=" text-light">
-          ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！
+          ようこそ、<%= current_customer.name %>さん！
         </h5>
         <ul class="navbar-nav ml-auto">
         <li class="nav-item">

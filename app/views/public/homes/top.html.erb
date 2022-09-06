@@ -1,3 +1,44 @@
-
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-9">
+      <div class="mainvisual">
+        <div class="col-12 mx-auto my-5 mainvisual-text">
+          <div class="card">
+            <%#= image_tag "cake"%>
+              <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                <h6 class="bg-light">ようこそ、AWCへ！<br>
+                  このサイトは、ペットを飼いたい方、譲渡先を探す方<br>
+                  向けに作成されました。<br>
+                  会員でない方もペットの観覧はできますが、<br>
+                  実際の取引には会員登録が必要になります。<br>
+                </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>新着投稿</h3>
+      <div class="row">
+      <!--新着順-->
+      <% @animals.each.with_index(1) do |product, i| %>
+      <%= link_to animal_path(animal.id) do %>
+      <div class="col-10">
+      <p><%= image_tag animal.get_profile_image(200,200) %></p>
+      <!--種類-->
+      <p><%= animal.type %></p>
+      <!--性別-->
+      <p>¥<%= animal.gender %></p>
+      <!--年齢-->
+      <p>¥<%= animal.age %></p>
+      <!--都道府県-->
+      <p>¥<%= animal.prefecture %></p>
+      </div>
+      <% end %>
+      <% end %>
+      </div>
+      
+      <div class="text-right mt-4">
+      <%= link_to "すべての投稿を見る>", animals_path %>
+      </div>
+    </div>
+  </div>
+</div>

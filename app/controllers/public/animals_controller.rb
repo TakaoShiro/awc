@@ -11,6 +11,7 @@ class Public::AnimalsController < ApplicationController
   end
   
   def index
+    @animals = Animal.all
   end
 
   def show
@@ -25,7 +26,7 @@ class Public::AnimalsController < ApplicationController
    private
 
   def animal_params
-    params.require(:animal).permit(:profile_image,:type,:gender,:introduction,:age,:prefecture)
+    params.require(:animal).permit(:image,:animal_type,:gender,:introduction,:age,:prefecture)
   end
   
 end

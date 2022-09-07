@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row pt-5">
-      <%= form_with model: @animal, url: customer_path(current_customer) do |f| %>
+      <%= form_with model: @animal, url: animals_path do |f| %>
   <h4>新規投稿</h4>
   <table>
     <tr>
       <td>画像</td>
-      <td><%= f.file_field :profile_image %></td>
+      <td><%= f.file_field :image %></td>
     </tr>
     <tr>
       <td>種類</td>
-      <td><%= f.select :type, [["犬", "犬"], ["猫","猫"]], include_blank: "選択して下さい" %><</td>
+      <td><%= f.select :animal_type, [["犬", "犬"], ["猫","猫"]], include_blank: "選択して下さい" %></td>
     </tr>
     <tr>
       <td>性別<td>
@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <td>年齢</td>
-      <td><%= f.select :age, [["0~1歳", "0~1歳"], ["2歳","2歳"], ["3歳","3歳"], ["4~7歳","4~7歳"], ["8~10歳","8~10歳"], ["11歳以上","11歳以上"]], include_blank: "選択して下さい" %><</td>
+      <td><%= f.select :age, [["0~1歳", "0~1歳"], ["2歳","2歳"], ["3歳","3歳"], ["4~7歳","4~7歳"], ["8~10歳","8~10歳"], ["11歳以上","11歳以上"]], include_blank: "選択して下さい" %></td>
     </tr>
     <tr>
       <td>都道府県</td>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
       <td>紹介文</td>
-      <td><%= f.text_area :introduction %></td>
+      <td><%= f.text_area :introduction, size: "40x5", placeholder: "去勢済かどうか？ワクチン接種履歴等についてもご記入ください"%></td>
     </tr>
   </table>
   <table>

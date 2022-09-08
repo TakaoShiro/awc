@@ -5,18 +5,22 @@
     </div>
   </div>
     <% @animals.each do |animal| %>
+    <%= link_to animal_path(animal.id) do %>
     <div class="row">
-      <div class="col-md-3">
-        <%= link_to animal_path(animal.id) do %>
+      <div class="col-md-3 mt-5">
         <%= image_tag animal.get_image(200,200) %>
+      </div>
+      <div class="col-md-2 mt-5">
         <p>種類 : <%= animal.animal_type %></p>
         <p>性別 : <%= animal.gender %></p>
         <p>年齢 : <%= animal.age %>歳</p>
         <p>譲渡場所 : <%= animal.prefecture %></p>
+      </div>
+      <div class="col-md-7 mt-5">
         <p>紹介文 : <%= animal.introduction %></p>
-        <% end %>
       </div>
     </div>
+    <% end %>
     <% end %>
     <div class="row">
       <div class="col-12 d-flex justify-content-center">

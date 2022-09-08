@@ -4,6 +4,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(params[:id])
+    @animal = Animal.find(params[:id])
   end
 
   def edit

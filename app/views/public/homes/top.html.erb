@@ -22,15 +22,12 @@
       <% @animals.each.with_index(1) do |animal, i| %>
       <%= link_to animals_path(animal.id) do %>
       <div class="col-10">
-      <p><%= image_tag animal.get_profile_image(200,200) %></p>
-      <!--種類-->
-      <p><%= animal.type %></p>
-      <!--性別-->
-      <p>¥<%= animal.gender %></p>
-      <!--年齢-->
-      <p>¥<%= animal.age %></p>
-      <!--都道府県-->
-      <p>¥<%= animal.prefecture %></p>
+      <p><%= image_tag animal.get_image(200,200) %></p>
+      <p>種類 : <%= animal.animal_type %></p>
+      <p>性別 : <%= animal.gender %></p>
+      <p>年齢 : <%= animal.age %>歳</p>
+      <p>譲渡場所 : <%= animal.prefecture %></p>
+      <p>紹介文 : <%= animal.introduction %></p>
       </div>
       <% end %>
       <% end %>

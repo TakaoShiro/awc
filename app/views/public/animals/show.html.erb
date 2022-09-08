@@ -23,43 +23,45 @@
   </div>
   
   <div class="row">
-    <div class="col-md-12">
-      <h3>コメントする</h3>
+    <div class="col-md-12 mt-5">
+      <p>譲渡希望の方はこちらのフォームからコメントを送信願います。</p>
     </div>
   </div>
   
   <!--コメント機能の実装-->
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-3">
       <%= form_with model:[@animal, @comment], method: :post do |f| %>
-      <%= f.text_area :comment %>
+      <%= f.text_area :message %>
       <%= f.hidden_field :animal_id, value: @animal.id %>
-      <%= f.submit 'コメントする' %>
+    </div>
+    <div class="col-md-9">
+      <%= f.submit 'コメントする', class: "btn btn-success ml-5" %>
       <% end %>
     </div>
   </div>
   
   <div class="row">
-    <div class="col-md-12">
-      <h3>コメント(全<%#= @animals.count %>件)</h3>
+    <div class="col-md-12 mt-5">
+      <h3>コメント(全<%= @comments.count %>件)</h3>
     </div>
   </div>
   
+      <% @comments.each do |comment| %>
   <div class="row">
-    <div class="col-md-3 text-center mt-5">
-      <%= image_tag @customer.get_image(200,300) %>
+    <div class="col-md-2 text-center mt-5">
+      <%= image_tag comment.customer.get_image(200,300) %>
     </div>
-    <div class="col-md-2 text-left mt-5">
-      <%= link_to customer_path(@customer.id) do %>
-      <p><%= @customer.name %></p>
-      <p><%= @customer.prefecture %></p>
+    <div class="col-md-1 text-left mt-5">
+      <%= link_to customer_path(comment.customer.id) do %>
+      <p><%= comment.customer.name %></p>
+      <p><%= comment.customer.prefecture %></p>
     </div>
     <!--コメントを表示-->
-    <div class="col-md-7 text-left mt-5">
-      <% @comments.each do |comment| %>
-      <%= comment.comment %>
-      <% end %>
+    <div class="col-md-9 text-left mt-5">
+      <%= comment.message %>
     </div>
       <% end %>
   </div>
+      <% end %>
 </div>

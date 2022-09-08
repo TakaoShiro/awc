@@ -10,6 +10,6 @@ class Public::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:comment, :animal_id)  #formにてanimal_idパラメータを送信して、コメントへanimal_idを格納するようにする必要がある。
+    params.require(:comment).permit(:message, :animal_id)  #formにてanimal_idパラメータを送信して、コメントへanimal_idを格納するようにする必要がある。
   end
 end

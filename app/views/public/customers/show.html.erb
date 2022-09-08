@@ -21,8 +21,8 @@
     </div>
   </div>
   
+  <% @animals.each do |animal| %>
   <div class="row">
-    <% @animals.each do |animal| %>
     <div class="col-md-3 text-center mt-5">
       <%= image_tag animal.get_image(200,300) %>
     </div>
@@ -37,6 +37,6 @@
       <p>紹介文 : <%= animal.introduction %></p>
     </div>
       <% end %>
-    <% end %>
   </div>
+  <% end %>
 </div>

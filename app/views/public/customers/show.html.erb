@@ -22,21 +22,21 @@
   </div>
   
   <div class="row">
-    <%# @animals.each do |animal| %>
+    <% @animals.each do |animal| %>
     <div class="col-md-3 text-center mt-5">
-      <%= image_tag @animal.get_image(200,300) %>
+      <%= image_tag animal.get_image(200,300) %>
     </div>
     <div class="col-md-2 text-left mt-5">
-      <%= link_to animal_path(@animal.id) do %>
-      <p>種類 : <%= @animal.animal_type %></p>
-      <p>性別 : <%= @animal.gender %></p>
-      <p>年齢 : <%= @animal.age %>歳</p>
-      <p>譲渡場所 : <%= @animal.prefecture %></p>
+      <%= link_to animal_path(animal.id) do %>
+      <p>種類 : <%= animal.animal_type %></p>
+      <p>性別 : <%= animal.gender %></p>
+      <p>年齢 : <%= animal.age %>歳</p>
+      <p>譲渡場所 : <%= animal.prefecture %></p>
     </div>
     <div class="col-md-7 text-left mt-5">
-      <p>紹介文 : <%= @animal.introduction %></p>
+      <p>紹介文 : <%= animal.introduction %></p>
     </div>
       <% end %>
-    <%# end %>
+    <% end %>
   </div>
 </div>

@@ -3,6 +3,9 @@
     <div class="col-lg-3">
       <h5 class="bg-dark text-light text-center">ユーザー一覧</h5>
     </div>
+  </div>
+  
+  <div class='row'>
     <table class='table'>
       <thead>
         <tr>
@@ -13,17 +16,23 @@
         </tr>
     　</thead>
     　<tbody>
+        
         <% @customers.each do |customer| %>
+        
         <tr>
           <td><%= customer.id %></td>
           <td><%= image_tag customer.get_image(200,200) %></td>
-          <td><%= customer.name %></td>
+          <td><%= link_to (customer_path(customer.id)) do %>
+          <%= customer.name %>
+          <% end %></td>
           <td><%= customer.prefecture %></td>
         </tr>
+        
         <% end %>
     　</tbody>
     </table>
-    </div>
+  </div>
+  
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <%#= paginate @customers %>

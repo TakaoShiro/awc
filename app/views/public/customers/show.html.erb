@@ -14,7 +14,22 @@
         <p><%= @customer.prefecture %></p>
     </div>
     <div class="col-md-3 text-left mt-5">
-        <p><%= link_to "編集する", edit_customer_path(@customer.id), class: "btn btn-success px-3" %></p>
+      <p><%= link_to "編集する", edit_customer_path(@customer.id), class: "btn btn-success px-3" %></p>
+      <!--DM機能実装-->
+      <% unless @customer.id == current_customer.id %>
+        <!--roomが既に作成されている場合-->
+        <% if @isroom == true %>
+          <%= link_to "DMへ", room_path(@roomid.id), class: "btn btn-success px-3" %>
+        <!--roomを新しく作成する場合-->
+        <% else %>
+          <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :customer_id, value: @customer.id %>
+        <% end %>
+          <%= f.submit "DMを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+      <% end %>
+      <% end %>
+      <% end %>
     </div>
   </div>
   

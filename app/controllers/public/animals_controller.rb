@@ -23,9 +23,17 @@ class Public::AnimalsController < ApplicationController
   end
   
   def edit
+    @animal = Animal.find(params[:id])
+    unless @animal.customer == current_customer
+    redirect_to customer_path(current_customer)
+    end
   end
   
   def update
+    @animal = Animal.find(params[:id])
+    if @animal.update(animal_params)
+    redirect_to customer_path(current_customer)
+    end
   end
   
    private

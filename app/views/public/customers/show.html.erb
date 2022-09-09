@@ -9,9 +9,12 @@
     <div class="col-md-3 text-center mt-5">
       <%= image_tag @customer.get_image(200,300) %>
     </div>
-    <div class="col-md-9 text-left mt-5">
+    <div class="col-md-6 text-left mt-5">
         <p><%= @customer.name %></p>
         <p><%= @customer.prefecture %></p>
+    </div>
+    <div class="col-md-3 text-left mt-5">
+        <p><%= link_to "編集する", edit_customer_path(@customer.id), class: "btn btn-success px-3" %></p>
     </div>
   </div>
   
@@ -33,9 +36,27 @@
       <p>年齢 : <%= animal.age %>歳</p>
       <p>譲渡場所 : <%= animal.prefecture %></p>
     </div>
-    <div class="col-md-7 text-left mt-5">
+    <div class="col-md-4 text-left mt-5">
       <p>紹介文 : <%= animal.introduction %></p>
     </div>
+    
+      <div class="col-md-3 text-left mt-5">
+        <table>
+          <thead>
+            <tr>
+              <!--コメント数表示させたい-->
+              <th>コメント<%#= @comments.count %>件</th>
+              <th><!--いいね数--></th>
+            </tr>
+    　     </thead>
+    　     <tbody>
+            <tr>
+              <td><%#= link_to "編集する", edit_animal_path(@animals.id), class: "btn btn-success px-3" %></td>
+              <td><%#= link_to "削除する", animal_path(@animals.id), method: :delete, class: "btn btn-danger" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <% end %>
   </div>
   <% end %>

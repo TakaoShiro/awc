@@ -1,2 +1,60 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class='container'>
+  <div class='row pt-5'>
+    <div class="col-lg-4">
+      <h5 class="bg-dark text-light text-center"><%= @customer.name %>さんの会員情報編集</h5>
+    </div>
+  </div>
+  
+  <div class='row mt-5'>
+    <%= form_with model:[@customer], local:true do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :id, "会員ID" %></th>
+        <td><%= @customer.id %></td>
+      </tr>
+      
+      <tr>
+        <th><%= f.label "アイコン画像を追加" %></th>
+        <td><%= f.file_field :image %></td>
+      </tr>
+      
+      <tr>
+        <th><%= f.label "氏名" %></th>
+        <td><%= f.text_field :name, autocomplete: "name" %></td>
+      </tr>
+      
+      <tr>
+        <th><%= f.label "フリガナ" %></th>
+        <td><%= f.text_field :kana, autocomplete: "kana" %></td>
+      </tr>
+      
+      <tr>
+        <th><%= f.label "都道府県" %></th>
+        <td>
+          <%= f.select :prefecture, [["北海道", "北海道"], ["青森県", "青森県"], ["岩手県", "岩手県"], ["宮城県", "宮城県"], ["秋田県", "秋田県"], ["山形県", "山形県"], ["福島県", "福島県"], 
+          ["茨城県", "茨城県"], ["栃木県", "栃木県"], ["群馬県", "群馬県"], ["埼玉県", "埼玉県"], ["千葉県", "千葉県"], ["東京都", "東京都"], ["神奈川県", "神奈川県"], ["新潟県", "新潟県"], 
+          ["富山県", "富山県"], ["石川県", "石川県"], ["福井県", "福井県"], ["山梨県", "山梨県"], ["長野県", "長野県"], ["岐阜県", "岐阜県"], ["静岡県", "静岡県"], ["愛知県", "愛知県"], 
+          ["三重県", "三重県"], ["滋賀県", "滋賀県"], ["京都府", "京都府"], ["大阪府", "大阪府"], ["兵庫県", "兵庫県"], ["奈良県", "奈良県"], ["和歌山県", "和歌山県"], ["鳥取県", "鳥取県"], 
+          ["島根県", "島根県"], ["岡山県", "岡山県"], ["広島県", "広島県"], ["山口県", "山口県"], ["徳島県", "徳島県"], ["香川県", "香川県"], ["愛媛県", "愛媛県"], ["高知県", "高知県"], 
+          ["福岡県", "福岡県"], ["佐賀県", "佐賀県"], ["長崎県", "長崎県"], ["熊本県", "熊本県"], ["大分県", "大分県"], ["宮崎県", "宮崎県"], ["鹿児島県", "鹿児島県"], ["沖縄県", "沖縄県"]], include_blank: "選択して下さい" %></td>
+        </td>
+      </tr>
+      
+      <tr>
+        <th><%= f.label "メールアドレス" %></th>
+        <td><%= f.text_field :email, autocomplete: "email" %></td>
+      </tr>
+      
+      <tr>
+        <th><%= f.label "電話番号(ハイフンなし)" %></th>
+        <td><%= f.text_field :telephone_namber, autocomplete: "telephone_namber" %></td>
+      </tr>
+      
+      <tr>
+        <td><%= f.submit "変更を保存",class: 'btn btn-outline-success btn-lg' %></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+  </div>
+</div>

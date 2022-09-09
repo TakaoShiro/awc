@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get "customers/withdraw"
     resources :sessions, only: [:new,:create,:destroy]
     resources :registrations, only: [:new,:create]
-    resources :animals, only: [:new,:index,:show,:edit,:create,:update] do
+    resources :animals, only: [:new,:index,:show,:edit,:create,:update,:destroy] do
       resources :comments
     end
     get "homes/about"

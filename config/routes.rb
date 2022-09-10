@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :registrations, only: [:new,:create]
     resources :animals, only: [:new,:index,:show,:edit,:create,:update,:destroy] do
       resources :comments
+      resource :favorites, only: [:create, :destroy]
     end
     resources :users, only: [:show,:edit,:update]
     resources :messages, only: [:create]

@@ -14,4 +14,8 @@ class Animal < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
   
+  #ユーザーがその投稿に対していいねをしているか判断
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
 end

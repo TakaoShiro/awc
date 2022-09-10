@@ -5,6 +5,7 @@ class Public::RoomsController < ApplicationController
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
+      
     else
       redirect_back(fallback_location: root_path)
     end

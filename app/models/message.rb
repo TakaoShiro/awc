@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  validates :content, presence: true
+  validates :direct_message, presence: true
   belongs_to :customer
   belongs_to :room
 end

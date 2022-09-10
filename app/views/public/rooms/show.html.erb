@@ -1,5 +1,5 @@
 <div class="left-button">
-  <%= link_to "ユーザー一覧に戻る", customer_path(customer.id), class:"edit-link" %>
+  <%= link_to "ユーザー一覧に戻る", customers_path, class:"edit-link" %>
 </div>
 
 <div class="chats">
@@ -10,18 +10,19 @@
           <div class="chat-face">
             <%= image_tag m.customer.image, class:"user-image" %>
           </div>
-          <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
+          <div class="chat-hukidashi"> <strong><%= m.direct_message %></strong> <br>
             <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
+  <%= @message.direct_message %>
   <div class="posts">
-    <%= form_for @message do |f| %>
-      <%= f.text_field :direct_message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.submit "投稿",class: 'form-submit'%>
-    <% end %>
-  </div>
+  <%= form_with model: @message do |f| %>
+    <%= f.text_field :direct_message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "投稿",class: 'form-submit'%>
+  <% end %>
+</div>
 </div>

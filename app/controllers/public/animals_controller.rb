@@ -16,8 +16,9 @@ class Public::AnimalsController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    #@customer = Customer.find(params[:id])
     @animal = Animal.find(params[:id])
+    @customer = @animal.customer
     @comments = @animal.comments  #投稿詳細に関連付けてあるコメントを全取得
     @comment = current_customer.comments.new  #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
   end
@@ -34,6 +35,12 @@ class Public::AnimalsController < ApplicationController
     if @animal.update(animal_params)
     redirect_to customer_path(current_customer)
     end
+  end
+  
+  def destroy
+    animal = Animal.find(params[:id])
+    animal.destroy
+    redirect_to customer_path(current_customer)
   end
   
    private

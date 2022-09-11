@@ -1,9 +1,21 @@
 <div class="container mt-5">
+  
+  
+  
   <div class="row">
     <div class="col-md-12">
       <h3><strong>投稿一覧</strong>(全<%= @animals.count %>件)</h3>
     </div>
   </div>
+  
+  <!--検索機能の実装-->
+  <%= form_tag(animals_url, :method => :get) do %>
+  <%= collection_select :search, :animal_type, @animal_types, :id, :name, {} %>
+  <%= collection_select :search, :animal_gender, @animal_genders, :id, :name, {} %>
+  <%= collection_select :search, :animal_age, @animal_ages, :id, :name, {} %>
+  <%= collection_select :search, :animal_gender, @animal_prefectures, :id, :name, {} %>
+  <%= submit_tag("検索") %>
+  <% end %>
   
   <% @animals.each do |animal| %>
     <%= link_to animal_path(animal.id) do %>

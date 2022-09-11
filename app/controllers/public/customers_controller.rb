@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, only: [:show]
   
   def index
-    @customers = Customer.all
+    @customers = Customer.where(is_deleted: false)
   end
 
   def show

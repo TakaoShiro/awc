@@ -19,7 +19,10 @@
     <div class="col-md-7 text-left mt-5">
       <p>紹介文 : <%= @animal.introduction %></p>
     </div>
+    <!--いいね機能の実装-->
+    <div id="favorite_buttons_<%= @animal.id %>">
     <%= render "public/favorites/favorites_btn", animal: @animal %>
+    </div>
       <% end %>
   </div>
   

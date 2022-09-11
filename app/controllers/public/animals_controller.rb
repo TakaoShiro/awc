@@ -13,7 +13,20 @@ class Public::AnimalsController < ApplicationController
   
   def index
     @animals = Animal.all
-    
+    if params[:search].present?
+      @animals = @animals.where(animal_type: params[:search][:animal_type])
+      @animals = @animals.where(gender: params[:search][:animal_gender])
+      #rangeが一致しているデータを呼び出す
+      @range = AnimalAge.data.detect{|agedata|agedata[:id] == params[:search][:animal_age]}[:range]
+      @animals = @animals.where(gender: @range)
+      @animals = @animals.where(gender: params[:search][:animal_prefecture])
+      
+    end
+
+    @animal_types = AnimalType.all
+    @animal_genders = AnimalGender.all
+    @animal_ages = AnimalAge.all
+    @animal_prefectures = AnimalPrefecture.all
   end
 
   def show

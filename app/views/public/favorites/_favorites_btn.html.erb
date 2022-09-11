@@ -1,14 +1,14 @@
 <!--いいね機能の実装-->
 <% if animal.favorited_by?(current_customer) %>
 <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-  <%= link_to animal_favorites_path(animal), method: :delete do %>
+  <%= link_to animal_favorites_path(animal), method: :delete, remote: true do %>
 <font color = "red">
   ♥<%= animal.favorites.count %>
 </font>
   <% end %>
   <% else %>
   <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-  <%= link_to animal_favorites_path(animal), method: :post do %>
+  <%= link_to animal_favorites_path(animal), method: :post, remote: true do %>
   ♥<%= animal.favorites.count %>
   <% end %>
 <% end %>

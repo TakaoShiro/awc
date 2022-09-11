@@ -19,6 +19,7 @@
     <div class="col-md-7 text-left mt-5">
       <p>紹介文 : <%= @animal.introduction %></p>
     </div>
+    <%= render "public/favorites/favorites_btn", animal: @animal %>
       <% end %>
   </div>
   

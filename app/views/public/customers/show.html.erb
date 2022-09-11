@@ -18,8 +18,8 @@
       <!--DM機能実装-->
       <% unless @customer.id == current_customer.id %>
         <!--roomが既に作成されている場合-->
-        <% if @isroom == true %>
-          <%= link_to "DMへ", room_path(@roomid.id), class: "btn btn-success px-3" %>
+        <% if @isroom %>
+          <%= link_to "DMへ", room_path(@roomid), class: "btn btn-success px-3" %>
         <!--roomを新しく作成する場合-->
         <% else %>
           <%= form_for @room do |f| %>

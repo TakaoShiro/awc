@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     resources :rooms, only: [:show,:create]
-    resources :customers, only: [:index,:show,:edit,:update]
     get "customers/unsubscribe"
     patch "customers/withdraw"
+    resources :customers, only: [:index,:show,:edit,:update]
     resources :sessions, only: [:new,:create,:destroy]
     resources :registrations, only: [:new,:create]
     resources :animals, only: [:new,:index,:show,:edit,:create,:update,:destroy] do

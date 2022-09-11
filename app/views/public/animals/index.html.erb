@@ -22,7 +22,9 @@
         </div>
       </div>
     <% end %>
+    <div id="favorite_buttons_<%= animal.id %>">
     <%= render "public/favorites/favorites_btn", animal: animal %>
+    </div>
   <% end %>
   
     <div class="row">

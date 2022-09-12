@@ -1,2 +1,28 @@
-<h1>Admin::Sessions#new</h1>
-<p>Find me in app/views/admin/sessions/new.html.erb</p>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-xl-8 ml-auto">
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
+    <h5>ログイン</h5><br>
+    <p>会員の方はこちらからログイン</p>
+      <table>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td>パスワード</td>
+          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "ログイン", class:"btn btn-primary" %></td>
+        </tr>
+      </table>
+      <% end %>
+      <table>
+      <h5>会員登録がお済みでない方</h5><br>
+        <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
+      </table>
+    </div>
+  </div>
+</div>

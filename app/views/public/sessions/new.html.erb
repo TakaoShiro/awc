@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-5">
     <div class="col-xl-8 ml-auto">
-    <%= form_with model: @customer, url: customer_session_path do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <h5>ログイン</h5><br>
     <p>会員の方はこちらからログイン</p>
       <table>

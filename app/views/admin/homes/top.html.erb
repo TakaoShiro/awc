@@ -1,2 +1,45 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class='container'>
+  <div class='row pt-5'>
+    <div class="col-lg-3">
+      <h5 class="bg-dark text-light text-center">ユーザー一覧</h5>
+    </div>
+  </div>
+  
+  <div class='row'>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>ユーザーID</th>
+          <th></th>
+          <th>氏名</th>
+          <th>電話番号</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+          <th></th>
+        </tr>
+    　</thead>
+    　<tbody>
+        
+        <% @customers.each do |customer| %>
+        
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= image_tag customer.get_image(200,200) %></td>
+          <td><%= link_to (customer_path(customer.id)) do %>
+          <%= customer.name %>
+          <% end %></td>
+          <td><%= customer.telephone_namber %></td>
+          <td><%= customer.email %></td>
+        </tr>
+        
+        <% end %>
+    　</tbody>
+    </table>
+  </div>
+  
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <%#= paginate @customers %>
+    </div>
+  </div>
+</div>

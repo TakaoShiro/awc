@@ -54,7 +54,7 @@
     <div class="col-md-7 text-left mt-5">
       <p>紹介文 : <%= animal.introduction %></p>
     </div>
-    
+    <% end %>
     <div class="row">
       <div class="col-md-12">
         <table>
@@ -62,7 +62,9 @@
             <tr>
               <!--コメント数表示させたい-->
               <th>コメント<%= animal.comments.count %>件</th>
-              <th><!--いいね数--></th>
+              <div id="favorite_buttons_<%= animal.id %>">
+              <%= render "public/favorites/favorites_btn", animal: animal %>
+              </div>
             </tr>
     　     </thead>
     　     <tbody>
@@ -74,7 +76,7 @@
         </table>
       </div>
     </div>
-      <% end %>
+      
   </div>
   <% end %>
 </div>

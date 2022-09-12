@@ -1,6 +1,9 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
+  scope :regular_customers, -> { where.not(email: 'guest@example.com') }
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          

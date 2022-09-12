@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def without_guest
+    customer = Customer.regular_customers.find_by(email: current_customer&.email)
+    redirect_to root_url if !customer
+  end
+  
 end

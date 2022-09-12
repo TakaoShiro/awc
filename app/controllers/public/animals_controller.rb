@@ -1,5 +1,7 @@
 class Public::AnimalsController < ApplicationController
   
+  before_action :without_guest, except: [:index]
+  
   def new
     @animal = Animal.new
   end
@@ -13,15 +15,18 @@ class Public::AnimalsController < ApplicationController
   
   def index
     @animals = Animal.all
-    if params[:search].present?
-      @animals = @animals.where(animal_type: params[:search][:animal_type])
-      @animals = @animals.where(gender: params[:search][:animal_gender])
-      #rangeが一致しているデータを呼び出す
-      @range = AnimalAge.data.detect{|agedata|agedata[:id] == params[:search][:animal_age]}[:range]
-      @animals = @animals.where(gender: @range)
-      @animals = @animals.where(gender: params[:search][:animal_prefecture])
-      
+    @animals = @animals.where(animal_type: params.dig(:search, :animal_type)) if params.dig(:search, :animal_type).present?
+    @animals = @animals.where(gender: params.dig(:search, :animal_gender)) if params.dig(:search, :animal_gender).present?
+    animal_params = params.dig(:search, :animal_age)
+    if animal_params.present? && animal_params == "不明"
+      age = params.dig(:search, :animal_age)
+    elsif animal_params.present?
+      age = eval("[*#{animal_params}]")
+    else
+      age = ""
     end
+    @animals = @animals.where(age: age) if age.present?
+    @animals = @animals.where(prefecture: params.dig(:search, :animal_prefectures)) if params.dig(:search, :animal_prefectures).present?
 
     @animal_types = AnimalType.all
     @animal_genders = AnimalGender.all

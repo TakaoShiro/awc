@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   
   before_action :authenticate_customer!, only: [:show]
+  before_action :without_guest, only: [:show, :index]
   
   def index
     @customers = Customer.where(is_deleted: false)

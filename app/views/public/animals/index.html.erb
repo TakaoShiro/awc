@@ -10,10 +10,10 @@
   
   <!--検索機能の実装-->
   <%= form_tag(animals_url, :method => :get) do %>
-  <%= collection_select :search, :animal_type, @animal_types, :id, :name, {} %>
-  <%= collection_select :search, :animal_gender, @animal_genders, :id, :name, {} %>
-  <%= collection_select :search, :animal_age, @animal_ages, :id, :name, {} %>
-  <%= collection_select :search, :animal_gender, @animal_prefectures, :id, :name, {} %>
+  <%= collection_select :search, :animal_type, @animal_types, :id, :name, {include_blank: "猫・犬"} %>
+  <%= collection_select :search, :animal_gender, @animal_genders, :id, :name, {include_blank: "性別"} %>
+  <%= collection_select :search, :animal_age, @animal_ages, :id, :name, {include_blank: "年齢"} %>
+  <%= collection_select :search, :animal_prefectures, @animal_prefectures, :id, :name, {include_blank: "譲渡場所"} %>
   <%= submit_tag("検索") %>
   <% end %>
   

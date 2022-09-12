@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root to: "homes#top"
+    #ゲストログイン機能
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     resources :rooms, only: [:show,:create]
     get "customers/unsubscribe"
     patch "customers/withdraw"

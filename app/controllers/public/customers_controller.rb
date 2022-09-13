@@ -5,6 +5,11 @@ class Public::CustomersController < ApplicationController
   
   def index
     @customers = Customer.where(is_deleted: false)
+    if params[:word]
+      @customers = Customer.looks(params[:search], params[:word])
+    else
+      @customers = Customer.where(is_deleted: false)
+    end
   end
 
   def show

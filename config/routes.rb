@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :admins,skip: [:registrations, :passwords], controllers: {
+devise_for :admins, skip: [:registrations, :passwords], controllers: {  
   sessions: "admin/sessions"
 }
-  devise_for :customers,skip: [:passwords], controllers: {
+
+devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }, path: "public"
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
+    get "search" => "searches#search"
     resources :sessions, only: [:new,:create,:destroy]
     resources :registrations, only: [:new,:create]
     resources :animals, only: [:new,:index,:show,:edit,:create,:update,:destroy] do

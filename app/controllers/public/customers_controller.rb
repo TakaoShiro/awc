@@ -9,6 +9,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    #いいね一覧機能の作成
+    favorites= Favorite.where(customer_id: @customer.id).pluck(:animal_id)
+    @favorite_animals = Animal.find(favorites)
     @animals = @customer.animals
     #DM機能の実装
     @currentcustomerentry=Entry.where(customer_id: current_customer.id)

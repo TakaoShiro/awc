@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     resources :rooms, only: [:show,:create]
     get "customers/unsubscribe"
     patch "customers/withdraw"
-    resources :customers, only: [:index,:show,:edit,:update]
+    resources :customers, only: [:index,:show,:edit,:update] do
+      member do
+        get :favorites
+      end
+    end
     resources :sessions, only: [:new,:create,:destroy]
     resources :registrations, only: [:new,:create]
     resources :animals, only: [:new,:index,:show,:edit,:create,:update,:destroy] do

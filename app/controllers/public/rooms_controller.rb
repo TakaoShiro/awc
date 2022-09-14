@@ -1,4 +1,6 @@
 class Public::RoomsController < ApplicationController
+  before_action :ensure_correct_customer, only: [:show, :create]
+  
   def show
     @room = Room.find(params[:id])
     if Entry.where(customer_id: current_customer.id,room_id: @room.id).present?

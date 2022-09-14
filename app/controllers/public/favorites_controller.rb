@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :ensure_correct_customer, only: [:create, :destroy]
   
   def create
     @amimal_favorite = Favorite.new(customer_id: current_customer.id, animal_id: params[:animal_id])

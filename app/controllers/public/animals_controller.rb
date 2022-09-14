@@ -1,6 +1,7 @@
 class Public::AnimalsController < ApplicationController
   
   before_action :without_guest, except: [:index]
+  before_action :ensure_correct_customer, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   
   def new
     @animal = Animal.new

@@ -1,5 +1,5 @@
 class Public::MessagesController < ApplicationController
-  
+  before_action :ensure_correct_customer, only: [:create]
   before_action :authenticate_customer!, only: [:create]
 
   def create

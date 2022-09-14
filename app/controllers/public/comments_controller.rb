@@ -1,4 +1,6 @@
 class Public::CommentsController < ApplicationController
+  before_action :ensure_correct_customer, only: [:create]
+  
   def create
     @comment = current_customer.comments.new(comment_params)
     if @comment.save

@@ -1,6 +1,5 @@
 class Public::CustomersController < ApplicationController
-  
-  before_action :authenticate_customer!, only: [:show]
+  before_action :ensure_correct_customer, only: [:index, :show, :edit, :update, :destroy, :update, :unsubscribe, :withdraw]
   before_action :without_guest, only: [:show, :index]
   
   def index

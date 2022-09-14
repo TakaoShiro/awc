@@ -1,45 +1,38 @@
 <div class='container'>
   <div class='row pt-5'>
     <div class="col-lg-3">
-      <h5 class="bg-dark text-light text-center">ユーザー一覧</h5>
+      <h5 class="bg-dark text-light text-center">会員一覧</h5>
     </div>
-  </div>
-  
-  <div class='row'>
     <table class='table'>
       <thead>
         <tr>
-          <th>ユーザーID</th>
-          <th></th>
+          <th>会員ID</th>
           <th>氏名</th>
-          <th>電話番号</th>
           <th>メールアドレス</th>
           <th>ステータス</th>
-          <th></th>
         </tr>
     　</thead>
     　<tbody>
-        
-        <% @customers.each do |customer| %>
-        
-        <tr>
-          <td><%= customer.id %></td>
-          <td><%= image_tag customer.get_image(200,200) %></td>
-          <td><%= link_to (customer_path(customer.id)) do %>
-          <%= customer.name %>
-          <% end %></td>
-          <td><%= customer.telephone_namber %></td>
-          <td><%= customer.email %></td>
-        </tr>
-        
-        <% end %>
+　      <% @customers.each do |customer| %>
+　      <tr>
+　        <td><%= customer.id %></td>
+　        <td><%= link_to customer.name,admin_customer_path(customer.id) %></td>
+　        <td><%= customer.email %></td>
+　        <td>
+            <% if customer.is_deleted == false %>
+              <span class="text-success">有効</span>
+            <% else %>
+              <span class="text-secondary">退会</span>
+            <% end %>
+          </td>
+　      </tr>
+　      <% end %>
     　</tbody>
     </table>
-  </div>
-  
+    </div>
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
-      <%#= paginate @customers %>
+      <%= paginate @customers %>
     </div>
   </div>
 </div>

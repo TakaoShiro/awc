@@ -10,7 +10,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 
   namespace :admin do
     root to: "homes#top"
-    resources :sessions, only: [:new,:create,:destroy]
+    #resources :sessions, only: [:new,:create,:destroy]
   end
   
   scope module: :public do

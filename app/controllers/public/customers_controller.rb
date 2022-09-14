@@ -70,9 +70,8 @@ class Public::CustomersController < ApplicationController
   private
 
   def ensure_correct_customer
-    customer_signed_in?
+    redirect_to root_path unless customer_signed_in?
   end
-  
 
   def customers_params
     params.require(:customer).permit(:name, :kana, :prefecture, :telephone_namber, :email, :image)

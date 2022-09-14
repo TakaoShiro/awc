@@ -11,6 +11,11 @@ class Public::CommentsController < ApplicationController
   end
 
   private
+  
+  def ensure_correct_customer
+    redirect_to root_path unless customer_signed_in?
+  end
+  
   def comment_params
     params.require(:comment).permit(:message, :animal_id)  #formにてanimal_idパラメータを送信して、コメントへanimal_idを格納するようにする必要がある。
   end

@@ -6,6 +6,8 @@ class Public::HomesController < ApplicationController
     @animals = Animal.order('id DESC').limit(4)
   end
   
+  
+  
   def guest_sign_in
     customer = Customer.find_or_create_by!(email: 'guest@example.com', name: "ゲスト", kana:"ゲスト", prefecture:"ゲスト", telephone_namber:"00000000000") do |customer|
       customer.password = SecureRandom.urlsafe_base64
@@ -17,5 +19,11 @@ class Public::HomesController < ApplicationController
   end
 
   def about
+  end
+  
+  private
+  
+  def ensure_correct_customer
+    customer_signed_in?
   end
 end

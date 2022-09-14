@@ -63,7 +63,11 @@ class Public::AnimalsController < ApplicationController
     redirect_to customer_path(current_customer)
   end
   
-   private
+  private
+
+  def ensure_correct_customer
+    customer_signed_in?
+  end
 
   def animal_params
     params.require(:animal).permit(:image,:animal_type,:gender,:introduction,:age,:prefecture)

@@ -69,6 +69,11 @@ class Public::CustomersController < ApplicationController
   
   private
 
+  def ensure_correct_customer
+    customer_signed_in?
+  end
+  
+
   def customers_params
     params.require(:customer).permit(:name, :kana, :prefecture, :telephone_namber, :email, :image)
   end

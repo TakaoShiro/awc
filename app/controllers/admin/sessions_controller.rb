@@ -3,7 +3,7 @@
 class Admin::SessionsController < Devise::SessionsController
 #   before_action :authenticate_admin!
    
-protected
+#protected
 #   def after_sign_in_path_for(resource)
 #     admin_root_path
 #   end
@@ -20,9 +20,14 @@ protected
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    binding.irb
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    respond_with resource, location: after_sign_in_path_for(resource)
+  end
 
   # DELETE /resource/sign_out
   # def destroy

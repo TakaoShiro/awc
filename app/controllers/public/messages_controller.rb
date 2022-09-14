@@ -10,4 +10,10 @@ class Public::MessagesController < ApplicationController
     end
     redirect_to "/rooms/#{@message.room_id}"
   end
+  
+  private
+  
+  def ensure_correct_customer
+    customer_signed_in?
+  end
 end

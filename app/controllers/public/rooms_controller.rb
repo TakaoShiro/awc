@@ -19,4 +19,10 @@ class Public::RoomsController < ApplicationController
     @entry2 = Entry.create(params.require(:entry).permit(:customer_id, :room_id).merge(room_id: @room.id))
     redirect_to rooms_path
   end
+  
+  private
+  
+  def ensure_correct_customer
+    customer_signed_in?
+  end
 end

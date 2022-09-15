@@ -26,3 +26,10 @@
     padding: 10px 20px;                             /* 余白指定 */
     background-color: rgba(255, 255, 255, 0.7);     /* 背景色指定 */
 }
+
+.bg_dog-about{
+    text-align:  center;    /* 文字中央寄せ */
+    background: image-url("dog.jpg") no-repeat center / contain;
+    width: 800px;
+    height: 650px;
+}

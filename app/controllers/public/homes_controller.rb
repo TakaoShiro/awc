@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
-  before_action :ensure_correct_customer, except: [:top]
+  before_action :ensure_correct_customer, except: [:top, :about]
   
   def top
     #新着順

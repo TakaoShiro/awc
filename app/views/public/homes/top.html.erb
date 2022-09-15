@@ -1,19 +1,16 @@
 <div class="container">
   <div class="row pt-5">
-    <div class="col-9">
+    <div class="col-12">
       <div class="mainvisual">
         <div class="col-12 mx-auto my-5 mainvisual-text">
-          <div class="card">
-            <%= image_tag "cat.jpg"%>
-              <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                <h6 class="bg-light">ようこそ、AWCへ！<br>
-                  このサイトは、ペットを飼いたい方、譲渡先を探す方<br>
-                  向けに作成されました。<br>
-                  <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>からペットの観覧はできますが、<br>
-                  実際の取引には会員登録が必要になります。<br>
-                </h6>
+            <div class="bg_cat">
+              <div class="bg_cat-text">ようこそ、AWCへ！<br>
+                このサイトは、ペットを飼いたい方、譲渡先を探す方<br>
+                向けに作成されました。<br>
+                <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>からペットの観覧はできますが、<br>
+                実際の取引には会員登録が必要になります。<br>
+              <div>
             </div>
-          </div>
         </div>
       </div>
       <h3>新着投稿</h3>

@@ -15,6 +15,11 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  validates :telephone_namber, presence: true
+  validates :name, presence: true
+  validates :kana, presence: true
+  validates :prefecture, presence: true
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

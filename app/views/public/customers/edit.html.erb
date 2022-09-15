@@ -1,5 +1,6 @@
 <div class='container'>
   <div class='row pt-5'>
+    <%= render "public/shared/error_messages", resource: @customer %>
     <div class="col-lg-4">
       <h5 class="bg-dark text-light text-center"><%= @customer.name %>さんの会員情報編集</h5>
     </div>

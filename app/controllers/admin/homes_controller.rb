@@ -5,14 +5,14 @@ class Admin::HomesController < ApplicationController
   end
   
   def update
-    @customers = Customer.find(params[:id])
-    @customers.update(customer_params)
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
     redirect_to admin_root_path
   end
   
   private
 
-  def customers_params
+  def customer_params
     params.require(:customer).permit(:name, :kana, :prefecture, :telephone_namber, :email, :image, :is_deleted)
   end
 end

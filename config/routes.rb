@@ -10,7 +10,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 
   namespace :admin do
     root to: "homes#top"
-    resources :root, only: [:update]
+    resources :homes, only: [:update]
     #resources :sessions, only: [:new,:create,:destroy]
   end
   

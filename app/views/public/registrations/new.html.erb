@@ -5,9 +5,9 @@
     </div>
   </div>
   
+  <%= form_with model: @customer, url: customer_registration_path do |f| %>
 <div class="row">
   <div class="col-12"> 
-  <%= form_with model: @customer, url: customer_registration_path do |f| %>
   <table align="center">
     <tr>
       <td>氏名</td>

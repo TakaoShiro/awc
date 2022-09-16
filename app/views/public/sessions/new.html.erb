@@ -6,10 +6,10 @@
     </div>
   </div>
   
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <%= alert %>
   <div class="row">
     <div class="col-xl-8 ml-auto">
-    <%= form_with model: @customer, url: customer_session_path do |f| %>
-      <%= alert %>
       <table>
         <tr>
           <td>メールアドレス</td>

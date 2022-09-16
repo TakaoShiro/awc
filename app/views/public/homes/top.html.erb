@@ -1,31 +1,33 @@
 <div class="container">
   <div class="row pt-5">
     <div class="col-12">
-      <div class="mainvisual">
-        <div class="col-12 mx-auto my-5 mainvisual-text">
-            <div class="bg_cat">
-              <div class="bg_cat-text">ようこそ、AWCへ！<br>
-                このサイトは、ペットを飼いたい方、譲渡先を探す方<br>
-                向けに作成されました。<br>
-                <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>からペットの観覧はできますが、<br>
-                実際の取引には会員登録が必要になります。<br>
-              <div>
-            </div>
+      <div class="bg_cat">
+        <div class="bg_cat-text">ようこそ、AWCへ！<br>
+          このサイトは、ペットを飼いたい方、譲渡先を探す方<br>
+          向けに作成されました。<br>
+          <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>からペットの観覧はできますが、<br>
+          実際の取引には会員登録が必要になります。<br>
         </div>
       </div>
-      <h3>新着投稿</h3>
+      
+      <div class="row pt-5">
+        <div class="col-12">
+          <h4>新着投稿</h4>
+        </div>
+      </div>
+        
       <div class="row">
       <!--新着順-->
       <% @animals.each.with_index(1) do |animal, i| %>
       <%= link_to animals_path(animal.id) do %>
-      <div class="col-10">
-      <p><%= image_tag animal.get_image(200,200) %></p>
-      <p>種類 : <%= animal.animal_type %></p>
-      <p>性別 : <%= animal.gender %></p>
-      <p>年齢 : <%= animal.age %>歳</p>
-      <p>譲渡場所 : <%= animal.prefecture %></p>
-      <p>紹介文 : <%= animal.introduction %></p>
-      </div>
+        <div class="col-12">
+          <p><%= image_tag animal.get_image(200,200) %></p>
+          <p>種類 : <%= animal.animal_type %></p>
+          <p>性別 : <%= animal.gender %></p>
+          <p>年齢 : <%= animal.age %>歳</p>
+          <p>譲渡場所 : <%= animal.prefecture %></p>
+          <p>紹介文 : <%= animal.introduction %></p>
+        </div>
       <% end %>
       <% end %>
       </div>

@@ -1,8 +1,14 @@
 <div class="container">
   <div class="row pt-5">
-      <%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <h4>新規会員登録</h4>
-  <table>
+    <div class="col-xl-8 ml-auto">
+      <h4>新規会員登録</h4>
+    </div>
+  </div>
+  
+<div class="row">
+  <div class="col-12"> 
+  <%= form_with model: @customer, url: customer_registration_path do |f| %>
+  <table align="center">
     <tr>
       <td>氏名</td>
       <td><%= f.text_field :name, placeholder: "令和道子", autocomplete: "name" %></td>
@@ -12,7 +18,7 @@
       <td><%= f.text_field :kana, placeholder: "レイワミチコ", autocomplete: "kana" %></td>
     </tr>
     <tr>
-      <td>都道府県<td>
+      <td>都道府県</td>
       <td><%= f.select :prefecture, [["北海道", "北海道"], ["青森県", "青森県"], ["岩手県", "岩手県"], ["宮城県", "宮城県"], ["秋田県", "秋田県"], ["山形県", "山形県"], ["福島県", "福島県"], 
       ["茨城県", "茨城県"], ["栃木県", "栃木県"], ["群馬県", "群馬県"], ["埼玉県", "埼玉県"], ["千葉県", "千葉県"], ["東京都", "東京都"], ["神奈川県", "神奈川県"], ["新潟県", "新潟県"], 
       ["富山県", "富山県"], ["石川県", "石川県"], ["福井県", "福井県"], ["山梨県", "山梨県"], ["長野県", "長野県"], ["岐阜県", "岐阜県"], ["静岡県", "静岡県"], ["愛知県", "愛知県"], 
@@ -37,14 +43,20 @@
       <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
     </tr>
   </table>
-  <table>
-    <div class="text-center">
-      <%= f.submit "新規登録", class: "btn btn-success ml-5" %>
-    </div>
+  </div>
+</div>
+
+<div class="row pt-3">
+  <div class="col-xl-7 ml-auto">
+    <%= f.submit "新規登録", class: "btn btn-success ml-5" %>
+  </div>
+</div>
   <% end %>
 
+<div class="row pt-5">
+  <div class="col-xl-8 ml-auto">
     <h4>既に登録済みの方</h4>
     <p><%= render "public/shared/links" %>からログインしてください。</p>
-  </table>
   </div>
+</div>
 </div>

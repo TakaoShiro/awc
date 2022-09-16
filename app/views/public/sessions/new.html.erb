@@ -1,10 +1,15 @@
 <div class="container">
   <div class="row pt-5">
     <div class="col-xl-8 ml-auto">
+      <h4>ログイン</h4>
+      <p>会員の方はこちらからログイン</p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xl-8 ml-auto">
     <%= form_with model: @customer, url: customer_session_path do |f| %>
       <%= alert %>
-    <h5>ログイン</h5><br>
-    <p>会員の方はこちらからログイン</p>
       <table>
         <tr>
           <td>メールアドレス</td>
@@ -14,17 +19,21 @@
           <td>パスワード</td>
           <td><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit "ログイン", class:"btn btn-primary" %></td>
-        </tr>
-      </table>
-      <% end %>
-      <table>
-      <h5>会員登録がお済みでない方</h5><br>
-        <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
       </table>
     </div>
   </div>
+  
+  <div class="row pt-3">
+    <div class="col-xl-7 ml-auto">
+      <%= f.submit "ログイン", class:"btn btn-primary" %>
+    </div>
+  </div>
+    <% end %>
+    
+  <div class="row pt-5">
+    <div class="col-xl-8 ml-auto">
+      <h4>会員登録がお済みでない方</h4>
+      <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
+    </div>
+  </div>
 </div>
-

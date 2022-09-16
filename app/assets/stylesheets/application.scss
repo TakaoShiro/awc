@@ -16,7 +16,7 @@
 
 .bg_cat {
     text-align:  center;    /* 文字中央寄せ */
-    padding:  150px;        /* 余白指定 */
+    padding:  200px;        /* 余白指定 */
     background: image-url("cat.jpg") no-repeat center / contain;
 }
 
@@ -32,4 +32,10 @@
     background: image-url("dog.jpg") no-repeat center / contain;
     width: 800px;
     height: 650px;
+}
+
+.awc_logo{
+    background: image-url("logo.jpg") no-repeat center / contain;
+    width: 150px;
+    height: 120px
 }

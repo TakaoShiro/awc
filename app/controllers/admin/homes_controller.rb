@@ -3,7 +3,7 @@ class Admin::HomesController < ApplicationController
   def top
     @customers = Customer.all
     #ページネーション
-    @customers = @Customer.page(params[:page])
+    @customers_page = @customers.page(params[:page])
   end
   
   def update

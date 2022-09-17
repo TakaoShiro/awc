@@ -1,6 +1,13 @@
 <div class='container'>
   <div class='row pt-5'>
-    <%= render "public/shared/error_messages", resource: @customer %>
+  <% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
+  <% @customer.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+  <% end %>
     <div class="col-lg-4">
       <h5 class="bg-dark text-light text-center"><%= @customer.name %>さんの会員情報編集</h5>
     </div>

@@ -1,6 +1,5 @@
 class Public::HomesController < ApplicationController
-  before_action :ensure_correct_customer, except: [:top, :about]
-  
+
   def top
     #新着順
     @animals = Animal.order('id DESC').limit(4)
@@ -19,12 +18,6 @@ class Public::HomesController < ApplicationController
   end
 
   def about
-  end
-  
-  private
-  
-  def ensure_correct_customer
-    redirect_to root_path unless customer_signed_in?
   end
   
 end

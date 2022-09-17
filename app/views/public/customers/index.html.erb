@@ -1,16 +1,21 @@
 <div class='container'>
   <div class='row pt-5'>
+    <div class="col-12">
     <!--検索機能-->
     <% if customer_signed_in? %>
-  <div class="search_form">
-    <%= form_with url: customers_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    <% end %>
+    <div class="search_form">
+      <%= form_with url: customers_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word %>
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+        <%= f.submit "検索", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    </div>
   </div>
-<% end %>
-    <div class="col-lg-3">
+    <% end %>
+    
+  <div class='row pt-5'>
+    <div class="col-xl-3">
       <h5 class="bg-dark text-light text-center">ユーザー一覧</h5>
     </div>
   </div>
@@ -44,7 +49,7 @@
   
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
-      <%#= paginate @customers %>
+      <%= paginate @customers %>
     </div>
   </div>
 </div>

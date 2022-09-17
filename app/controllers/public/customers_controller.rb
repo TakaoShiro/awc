@@ -4,6 +4,8 @@ class Public::CustomersController < ApplicationController
   
   def index
     @customers = Customer.where(is_deleted: false)
+    #ページネーション
+    @customers = Customer.page(params[:page])
     if params[:word]
       @customers = Customer.looks(params[:search], params[:word])
     else
@@ -17,6 +19,8 @@ class Public::CustomersController < ApplicationController
     favorites= Favorite.where(customer_id: @customer.id).pluck(:animal_id)
     @favorite_animals = Animal.find(favorites)
     @animals = @customer.animals
+    #ページネーション
+    @favorite_animals = Animal.page(params[:page])
     #DM機能の実装
     @currentcustomerentry=Entry.where(customer_id: current_customer.id)
     @customerentry=Entry.where(customer_id: @customer.id)

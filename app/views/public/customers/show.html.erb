@@ -1,19 +1,19 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-12">
-      <h3>ユーザー詳細</h3>
+    <div class="col-xl-3">
+      <h5 class="bg-dark text-light text-center">ユーザー詳細</h5>
     </div>
   </div>
   
   <div class="row">
-    <div class="col-md-3 text-center mt-5">
+    <div class="col-md-3 text-center mt-4">
       <%= image_tag @customer.get_image(200,300) %>
     </div>
-    <div class="col-md-6 text-left mt-5">
+    <div class="col-md-6 text-left mt-4">
         <p><%= @customer.name %></p>
         <p><%= @customer.prefecture %></p>
     </div>
-    <div class="col-md-3 text-left mt-5">
+    <div class="col-md-3 text-left mt-4">
       <% if @customer == current_customer %>
       <p><%= link_to "編集する", edit_customer_path(@customer.id), class: "btn btn-success px-3" %></p>
       <% end %>
@@ -35,39 +35,39 @@
     </div>
   </div>
   
-  <div class="row">
-    <div class="col-md-12">
-      <h3><%= @customer.name %>さんの投稿</h3>
+  <div class="row pt-5">
+    <div class="col-xl-3">
+      <h5 class="bg-dark text-light text-center"><%= @customer.name %>さんの投稿</h5>
     </div>
   </div>
   
   <% @animals.each do |animal| %>
   <div class="row">
-    <div class="col-md-3 text-center mt-5">
+    <div class="col-md-3 text-center mt-4">
       <%= image_tag animal.get_image(200,300) %>
     </div>
-    <div class="col-md-2 text-left mt-5">
+    <div class="col-md-2 text-left mt-4">
       <%= link_to animal_path(animal.id) do %>
       <p>種類 : <%= animal.animal_type %></p>
       <p>性別 : <%= animal.gender %></p>
       <p>年齢 : <%= animal.age %>歳</p>
       <p>譲渡場所 : <%= animal.prefecture %></p>
     </div>
-    <div class="col-md-7 text-left mt-5">
+    <div class="col-md-12 text-left mt-4">
       <p>紹介文 : <%= animal.introduction %></p>
     </div>
     <% end %>
-  
+    </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12 text-center">
         <table>
           <thead>
             <tr>
               <!--コメント数表示させたい-->
               <th>コメント<%= animal.comments.count %>件</th>
-              <div id="favorite_buttons_<%= animal.id %>">
+              <th id="favorite_buttons_<%= animal.id %>">
               <%= render "public/favorites/favorites_btn", animal: animal %>
-              </div>
+              </th>
             </tr>
     　     </thead>
     　     <tbody>
@@ -81,31 +81,31 @@
         </table>
       </div>
     </div>
-  </div>
+  
   <% end %>
   
-  <div class="row">
-    <div class="col-md-12">
-      <h3>お気に入り一覧</h3>
+  <div class="row pt-5">
+    <div class="col-xl-3">
+      <h5 class="bg-dark text-light text-center">お気に入り一覧</h5>
     </div>
   </div>
   
   <% @favorite_animals.each do |animal| %><br>
-  <div class="row">
-    <div class="col-md-3 text-center mt-5">
+  <div class="row pb-3">
+    <div class="col-md-3 text-center">
       
       <%= image_tag animal.get_image(200,300) %>
     </div>
-    <div class="col-md-2 text-left mt-5">
+    <div class="col-md-2">
       <%= link_to animal_path(animal.id) do %>
       <p>種類 : <%= animal.animal_type %></p>
       <p>性別 : <%= animal.gender %></p>
       <p>年齢 : <%= animal.age %>歳</p>
       <p>譲渡場所 : <%= animal.prefecture %></p>
     </div>
-    <div class="col-md-7 text-left mt-5">
+    <div class="col-md-7">
       <p>紹介文 : <%= animal.introduction %></p>
     </div>
-    <% end %>
+      <% end %>
+  </div>
   <% end %>
-</div>

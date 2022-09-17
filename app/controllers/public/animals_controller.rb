@@ -10,8 +10,11 @@ class Public::AnimalsController < ApplicationController
   def create
     @animal = Animal.new(animal_params)
     @animal.customer_id = current_customer.id
-    @animal.save
-    redirect_to customer_path(current_customer)
+    if @animal.save
+      redirect_to customer_path(current_customer)
+    else
+      render :new
+    end
   end
   
   def index
@@ -53,7 +56,9 @@ class Public::AnimalsController < ApplicationController
   def update
     @animal = Animal.find(params[:id])
     if @animal.update(animal_params)
-    redirect_to customer_path(current_customer)
+      redirect_to customer_path(current_customer)
+    else
+      render :edit
     end
   end
   

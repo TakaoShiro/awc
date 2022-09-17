@@ -6,6 +6,12 @@ class Animal < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  validates :animal_type, presence: true
+  validates :gender, presence: true
+  validates :age, presence: true
+  validates :prefecture, presence: true
+  validates :introduction, presence: true
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

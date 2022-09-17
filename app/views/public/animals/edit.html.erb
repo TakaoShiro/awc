@@ -1,5 +1,16 @@
 <div class='container'>
   <div class='row pt-5'>
+    <% if @animal.errors.any? %>
+    <%= @animal.errors.count %>件のエラーが発生しました
+    <ul>
+    <% @animal.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+    <% end %>
+  </div>
+  
+  <div class='row pt-5'>
     <div class="col-lg-4">
       <h5 class="bg-dark text-light text-center">投稿内容編集</h5>
     </div>

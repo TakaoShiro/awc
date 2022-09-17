@@ -1,4 +1,15 @@
 <div class="container">
+  <div class='row pt-5'>
+    <% if @animal.errors.any? %>
+    <%= @animal.errors.count %>件のエラーが発生しました
+    <ul>
+    <% @animal.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+    <% end %>
+  </div>
+  
   <div class="row pt-5">
       <%= form_with model: @animal, url: animals_path do |f| %>
   <h4>新規投稿</h4>

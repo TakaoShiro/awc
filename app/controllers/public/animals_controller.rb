@@ -33,7 +33,7 @@ class Public::AnimalsController < ApplicationController
     end
     @animals = @animals.where(age: age) if age.present?
     @animals = @animals.where(prefecture: params.dig(:search, :animal_prefectures)) if params.dig(:search, :animal_prefectures).present?
-
+    
     @animal_types = AnimalType.all
     @animal_genders = AnimalGender.all
     @animal_ages = AnimalAge.all

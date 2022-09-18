@@ -10,6 +10,12 @@ class Public::CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = current_customer.comments(comment_params)
+    @comment.destroy
+    redirect_to customer_path(current_customer)
+  end
+
   private
   
   def ensure_correct_customer

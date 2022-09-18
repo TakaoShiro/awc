@@ -3,7 +3,6 @@ class Public::CustomersController < ApplicationController
   before_action :without_guest, only: [:show, :index]
   
   def index
-    #@customers = Customer.where(is_deleted: false)
     #ページネーション
     if params[:word]
       @customers = Customer.looks(params[:search], params[:word])
@@ -24,23 +23,22 @@ class Public::CustomersController < ApplicationController
     @customerentry=Entry.where(customer_id: @customer.id)
     #現在ログインしているユーザーではない
     unless @customer.id == current_customer.id
-      @currentcustomerentry.each do |cu|
-      @customerentry.each do |c|
+      @currentcustomerentry.each do |currentcustomer|
+      @customerentry.each do |customer|
         #すでにroomsが作成されている場合
-        if cu.room_id == c.room_id then
+        if currentcustomer.room_id == customer.room_id then
           @isroom = true
-          @roomid = cu.room_id
+          @roomid = currentcustomer.room_id
         end
       end
+      end
+      #roomが作成されていない場合
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
     end
-    #roomが作成されていない場合
-    if @isRoom
-    else
-      @room = Room.new
-      @entry = Entry.new
-    end
-    end
-    #@comments = @customer.animals.message #コメント数を表示させたい
   end
 
   def edit

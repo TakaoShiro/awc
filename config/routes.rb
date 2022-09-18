@@ -30,11 +30,10 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :sessions, only: [:new,:create,:destroy]
     resources :registrations, only: [:new,:create]
     resources :animals, only: [:new,:index,:show,:edit,:create,:update,:destroy] do
-      resources :comments
+      resources :comments, only: [:create,:destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :users, only: [:show,:edit,:update]
-    resources :messages, only: [:create]
+    resources :messages, only: [:create, :destroy]
     resources :rooms, only: [:create,:show]
     get "homes/about"
   end

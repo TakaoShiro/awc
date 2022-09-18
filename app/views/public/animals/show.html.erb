@@ -5,21 +5,27 @@
     </div>
   </div>
   
+  <div class="row pt-4">
+    <div class="col-md-3">
+      <%= link_to (customer_path(@customer.id)) do %>
+      <p>投稿者 : <%= @animal.customer.name %></p>
+      <% end %>
+    </div>
+  </div>
+  
   <div class="row">
-    <div class="col-md-3 mt-5">
+    <div class="col-md-3">
       <%= image_tag @animal.get_image(200,300) %>
     </div>
-      <%= link_to animal_path(@animal.id) do %>
-    <div class="col-md-2 mt-5">
+    <div class="col-md-2">
       <p>種類 : <%= @animal.animal_type %></p>
       <p>性別 : <%= @animal.gender %></p>
       <p>年齢 : <%= @animal.age %>歳</p>
       <p>譲渡場所 : <%= @animal.prefecture %></p>
     </div>
-    <div class="col-md-7 mt-5">
+    <div class="col-md-7">
       <p>紹介文 : <%= @animal.introduction %></p>
     </div>
-      <% end %>
   </div>
   
   <!--いいね機能の実装-->
@@ -47,27 +53,29 @@
     </div>
   </div>
   
-  <div class="row">
-    <div class="col-md-12 mt-5">
-      <h3>コメント(全<%= @comments.count %>件)</h3>
+  <div class="row pt-5">
+    <div class="col-xl-3">
+      <h5 class="bg-dark text-light text-center">コメント(全<%= @comments.count %>件)</h5>
     </div>
   </div>
   
       <% @comments.each do |comment| %>
-  <div class="row">
-    <div class="col-md-2 text-center mt-5">
+  <div class="row pt-5">
+    <div class="col-md-2 text-left">
+      <%= link_to customer_path(comment.customer.id) do %>
       <%= image_tag comment.customer.get_image(200,300) %>
+      <% end %>
     </div>
-    <div class="col-md-1 text-left mt-5">
+    <div class="col-md-1">
       <%= link_to customer_path(comment.customer.id) do %>
       <p><%= comment.customer.name %></p>
       <p><%= comment.customer.prefecture %></p>
+      <% end %>
     </div>
     <!--コメントを表示-->
-    <div class="col-md-9 text-left mt-5">
+    <div class="col-md-9">
       <%= comment.message %>
     </div>
-      <% end %>
   </div>
       <% end %>
 </div>

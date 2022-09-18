@@ -11,12 +11,13 @@
   </div>
   
   <div class='row pt-5'>
-    <div class="col-lg-4">
+    <div class="mx-auto col-lg-4">
       <h5 class="bg-dark text-light text-center">投稿内容編集</h5>
     </div>
   </div>
   
-  <div class='row mt-5'>
+  <div class='row pt-4'>
+    <div class="col-xl-8 ml-auto">
     <%= form_with model:[@animal], local:true do |f| %>
     <table>
       <tr>
@@ -55,11 +56,14 @@
         <th><%= f.label "紹介文" %></th>
         <td><%= f.text_field :introduction, autocomplete: "introduction" %></td>
       </tr>
-      
-      <tr>
-        <td><%= f.submit "変更を保存",class: 'btn btn-outline-success btn-lg' %></td>
-      </tr>
     </table>
-    <% end %>
+    </div>
   </div>
+
+  <div class="row pt-3">
+    <div class="col-xl-7 ml-auto">
+      <%= f.submit "変更を保存",class: 'btn btn-success ml-5' %>
+    </div>
+  </div>
+    <% end %>
 </div>

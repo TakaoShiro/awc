@@ -3,9 +3,9 @@ class Public::RoomsController < ApplicationController
   
   def show
     @room = Room.find(params[:id])
+    @message = Message.new
     if Entry.where(customer_id: current_customer.id,room_id: @room.id).present?
       @messages = @room.messages
-      @message = Message.new
       @entries = @room.entries
       
     else

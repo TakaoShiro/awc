@@ -18,9 +18,9 @@
     </div>
   </div>
   
+  <%= form_with model:[@customer], local:true do |f| %>
   <div class='row mt-4'>
     <div class="col-12">
-    <%= form_with model:[@customer], local:true do |f| %>
     <table align="center">
       <tr>
         <th><%= f.label :id, "会員ID" %></th>
@@ -67,11 +67,11 @@
     </div>
   </div>
   
-      <div class="row pt-4">
-        <div class="mx-auto">
-          <%= f.submit "変更を保存",class: 'btn btn-success ml-5' %>
-          <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger" %>
-        </div>
+    <div class="row pt-4">
+      <div class="mx-auto">
+        <%= f.submit "変更を保存",class: 'btn btn-success ml-5' %>
+        <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger" %>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 </div>

@@ -18,6 +18,7 @@
       <p><%= link_to "編集する", edit_customer_path(@customer.id), class: "btn btn-success px-3" %></p>
       <% end %>
       <!--DM機能実装-->
+      <% if customer_signed_in? %>
       <% unless @customer.id == current_customer.id %>
         <!--roomが既に作成されている場合-->
         <% if @isroom %>
@@ -29,6 +30,7 @@
           <%= e.hidden_field :customer_id, value: @customer.id %>
         <% end %>
           <%= f.submit "DMを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+      <% end %>
       <% end %>
       <% end %>
       <% end %>
@@ -66,14 +68,18 @@
               <!--コメント数表示させたい-->
               <th>コメント<%= animal.comments.count %>件</th>
               <th id="favorite_buttons_<%= animal.id %>">
+              <% if customer_signed_in? %>
               <%= render "public/favorites/favorites_btn", animal: animal %>
+              <% end %>
               </th>
             </tr>
     　     </thead>
     　     <tbody>
             <tr>
-              <% if animal.customer == current_customer %>
+              <% if animal.customer == current_customer || admin_signed_in? %>
+              <% unless admin_signed_in? %>
               <td><%= link_to "編集する", edit_animal_path(animal.id), class: "btn btn-success px-3" %></td>
+              <% end %>
               <td><%= link_to "削除する", animal_path(animal.id), method: :delete, class: "btn btn-danger" %></td>
               <% end %>
             </tr>

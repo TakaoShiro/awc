@@ -31,7 +31,9 @@
   <!--いいね機能の実装-->
   <div id="favorite_buttons_<%= @animal.id %>">
     <strong>コメント<%= @animal.comments.count %>件</strong>
+    <% if customer_signed_in? %>
     <%= render "public/favorites/favorites_btn", animal: @animal %>
+    <% end %>
   </div>
   
   <div class="row">
@@ -41,6 +43,7 @@
   </div>
   
   <!--コメント機能の実装-->
+  <% if customer_signed_in? %>
   <%= form_with model:[@animal, @comment], method: :post do |f| %>
   <div class="row">
     <div class="col-md-3">
@@ -51,6 +54,7 @@
       <%= f.submit 'コメントする', class: "btn btn-success ml-5" %>
     </div>
   </div>
+  <% end %>
   <% end %>
   <div class="row pt-5">
     <div class="col-xl-3">
@@ -64,11 +68,6 @@
       <%= link_to customer_path(comment.customer.id) do %>
       <%= image_tag comment.customer.get_image(200,300) %>
       <% end %>
-      
-      <%= link_to "削除する", animal_comment_path(@animal.id, comment.id), method: :delete, class: "btn btn-danger" %>
-      
-      
-      
     </div>
     <div class="col-md-1">
       <%= link_to customer_path(comment.customer.id) do %>
@@ -77,8 +76,13 @@
       <% end %>
     </div>
     <!--コメントを表示-->
-    <div class="col-md-9">
+    <div class="col-md-5">
       <%= comment.message %>
+    </div>
+    <div class="col-md-4">
+      <% if comment.customer == current_customer || admin_signed_in? %>
+      <%= link_to "削除する", animal_comment_path(@animal.id, comment.id), method: :delete, class: "btn btn-danger" %>
+      <% end %>
     </div>
   </div>
       <% end %>

@@ -19,24 +19,26 @@ class Public::CustomersController < ApplicationController
     @favorite_animals = Animal.find(favorites)
     @animals = @customer.animals
     #DM機能の実装
-    @currentcustomerentry=Entry.where(customer_id: current_customer.id)
+    @currentcustomerentry=Entry.where(customer_id: current_customer.id) if customer_signed_in?
     @customerentry=Entry.where(customer_id: @customer.id)
     #現在ログインしているユーザーではない
-    unless @customer.id == current_customer.id
-      @currentcustomerentry.each do |currentcustomer|
-      @customerentry.each do |customer|
-        #すでにroomsが作成されている場合
-        if currentcustomer.room_id == customer.room_id then
-          @isroom = true
-          @roomid = currentcustomer.room_id
+    if customer_signed_in?
+      unless @customer.id == current_customer.id 
+        @currentcustomerentry.each do |currentcustomer|
+        @customerentry.each do |customer|
+          #すでにroomsが作成されている場合
+          if currentcustomer.room_id == customer.room_id then
+            @isroom = true
+            @roomid = currentcustomer.room_id
+          end
         end
-      end
-      end
-      #roomが作成されていない場合
-      if @isRoom
-      else
-        @room = Room.new
-        @entry = Entry.new
+        end
+        #roomが作成されていない場合
+        if @isRoom
+        else
+          @room = Room.new
+          @entry = Entry.new
+        end
       end
     end
   end
@@ -72,7 +74,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def ensure_correct_customer
-    redirect_to root_path unless customer_signed_in?
+    redirect_to root_path unless customer_signed_in? || admin_signed_in?
   end
 
   def customers_params

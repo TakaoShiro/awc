@@ -41,11 +41,10 @@ class Public::AnimalsController < ApplicationController
   end
 
   def show
-    #@customer = Customer.find(params[:id])
     @animal = Animal.find(params[:id])
     @customer = @animal.customer
     @comments = @animal.comments  #投稿詳細に関連付けてあるコメントを全取得
-    @comment = current_customer.comments.new  #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
+    @comment = current_customer.comments.new if customer_signed_in?#投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
   end
   
   def edit
@@ -67,13 +66,13 @@ class Public::AnimalsController < ApplicationController
   def destroy
     animal = Animal.find(params[:id])
     animal.destroy
-    redirect_to customer_path(current_customer)
+    redirect_to customer_path(animal.customer_id)
   end
   
   private
 
   def ensure_correct_customer
-    redirect_to root_path unless customer_signed_in?
+    redirect_to root_path unless customer_signed_in? || admin_signed_in?
   end
 
   def animal_params

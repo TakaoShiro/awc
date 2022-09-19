@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   
   def without_guest
     customer = Customer.regular_customers.find_by(email: current_customer&.email)
-    redirect_to root_url if !customer
+    redirect_to root_url if !customer && !admin_signed_in?
   end
   
 end

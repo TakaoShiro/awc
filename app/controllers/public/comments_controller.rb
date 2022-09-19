@@ -11,10 +11,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-       # byebug
     comment = Comment.find(params[:id])
-
-    #@comment = current_customer.comments(comment_params)
     comment.destroy
     redirect_to animal_path(params[:animal_id])
   end

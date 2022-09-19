@@ -15,7 +15,6 @@ class Public::MessagesController < ApplicationController
   def destroy
     direct_message = Message.find(params[:id])
     room_id = direct_message.room_id
-    #@message = current_customer.Message(message_params)
     direct_message.destroy
     redirect_to room_path(room_id)
   end

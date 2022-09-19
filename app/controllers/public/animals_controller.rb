@@ -20,7 +20,6 @@ class Public::AnimalsController < ApplicationController
   def index
     @animals = Animal.all
     #ページネーション
-    @animals_page = @animals.page(params[:page])
     @animals = @animals.where(animal_type: params.dig(:search, :animal_type)) if params.dig(:search, :animal_type).present?
     @animals = @animals.where(gender: params.dig(:search, :animal_gender)) if params.dig(:search, :animal_gender).present?
     animal_params = params.dig(:search, :animal_age)
@@ -38,6 +37,8 @@ class Public::AnimalsController < ApplicationController
     @animal_genders = AnimalGender.all
     @animal_ages = AnimalAge.all
     @animal_prefectures = AnimalPrefecture.all
+    
+    @animals_page = @animals.page(params[:page])
   end
 
   def show

@@ -36,14 +36,14 @@
       </div>
     <% end %>
     
+    <strong>コメント<%= animal.comments.count %>件</strong>
     <div id="favorite_buttons_<%= animal.id %>">
-      <strong>コメント<%= animal.comments.count %>件</strong>
       <% if customer_signed_in? %>
       <%= render "public/favorites/favorites_btn", animal: animal %>
       <% end %>
     </div>
   <% end %>
-  
+      
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <%= paginate @animals_page %>

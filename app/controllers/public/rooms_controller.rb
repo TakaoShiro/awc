@@ -7,7 +7,6 @@ class Public::RoomsController < ApplicationController
     if Entry.where(customer_id: current_customer.id,room_id: @room.id).present?
       @messages = @room.messages
       @entries = @room.entries
-      
     else
       redirect_back(fallback_location: root_path)
     end

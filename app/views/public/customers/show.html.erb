@@ -97,7 +97,7 @@
   </div>
   
   <% @favorite_animals.each do |animal| %><br>
-  <div class="row pb-3">
+  <div class="row pb-2">
     <div class="col-md-3 text-center">
       
       <%= image_tag animal.get_image(200,300) %>
@@ -109,7 +109,7 @@
       <p>年齢 : <%= animal.age %>歳</p>
       <p>譲渡場所 : <%= animal.prefecture %></p>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-12">
       <p>紹介文 : <%= animal.introduction %></p>
     </div>
       <% end %>

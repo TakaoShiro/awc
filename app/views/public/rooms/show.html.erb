@@ -1,4 +1,4 @@
-<div class="container" style="width:800px;">
+<div class="container">
   <div class="row pt-5">
     <div class="col-12">
       <div class="left-button">
@@ -10,9 +10,8 @@
   <div class="row pt-5">
     <% if @messages.present? %>
       <% @messages.each do |m| %>
-    <div class="col-2">
-      
-      <p><%= image_tag m.customer.image, class:"user-image" %></p>
+    <div class="col-3">
+      <p><%= image_tag m.customer.get_image(200,300) %></p>
     </div>
     <div class="col-2">
       <p><strong><%= m.customer.name %></strong></p>
@@ -23,7 +22,7 @@
     <div class="col-2">
       <p><%= m.created_at.strftime("%Y-%m-%d %H:%M")%></p>
     </div>
-    <div class="col-3">
+    <div class="col-2">
       <% if m.customer == current_customer %>
       <%= link_to "削除する", message_path(m.id), method: :delete, class: "btn btn-danger" %>
       <% end %>
@@ -33,7 +32,7 @@
   </div>
         
     <%= @message.direct_message %>
-    <div class="posts pt-4">
+    <div class="posts pt-4 pb-3">
       <%= form_with model: @message do |f| %>
         <%= f.text_field :direct_message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
         <%= f.hidden_field :room_id, value: @room.id %>

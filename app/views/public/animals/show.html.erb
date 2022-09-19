@@ -64,7 +64,7 @@
   
       <% @comments.each do |comment| %>
   <div class="row pt-5">
-    <div class="col-md-2 text-left">
+    <div class="col-md-3 text-left">
       <%= link_to customer_path(comment.customer.id) do %>
       <%= image_tag comment.customer.get_image(200,300) %>
       <% end %>
@@ -76,7 +76,7 @@
       <% end %>
     </div>
     <!--コメントを表示-->
-    <div class="col-md-5">
+    <div class="col-md-4">
       <%= comment.message %>
     </div>
     <div class="col-md-4">

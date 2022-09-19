@@ -12,7 +12,7 @@
     </div>
   </div>
   
-    <%= form_with model: @customer, url: customer_session_path do |f| %>
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
   <div class="row">
     <div class="col-xl-8 ml-auto">
       <table>
@@ -29,11 +29,11 @@
   </div>
   
   <div class="row pt-3">
-    <div class="col-xl-7 ml-auto">
+    <div class="mx-auto">
       <%= f.submit "ログイン", class:"btn btn-primary" %>
     </div>
   </div>
-    <% end %>
+  <% end %>
     
   <div class="row pt-5">
     <div class="col-xl-8 ml-auto">

@@ -16,9 +16,9 @@
     </div>
   </div>
   
+  <%= form_with model:[@animal], local:true do |f| %>
   <div class='row pt-4'>
     <div class="col-xl-8 ml-auto">
-    <%= form_with model:[@animal], local:true do |f| %>
     <table>
       <tr>
         <th><%= f.label "画像" %></th>
@@ -65,5 +65,5 @@
       <%= f.submit "変更を保存",class: 'btn btn-success ml-5' %>
     </div>
   </div>
-    <% end %>
+  <% end %>
 </div>

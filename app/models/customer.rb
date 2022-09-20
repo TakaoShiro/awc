@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   
-  validates :telephone_namber, presence: true
+  validates :telephone_number, presence: true
   validates :name, presence: true
   validates :kana, presence: true
   validates :prefecture, presence: true

@@ -6,7 +6,7 @@ class Public::HomesController < ApplicationController
   end
   
   def guest_sign_in
-    customer = Customer.find_or_create_by!(email: 'guest@example.com', name: "ゲスト", kana:"ゲスト", prefecture:"ゲスト", telephone_namber:"00000000000") do |customer|
+    customer = Customer.find_or_create_by!(email: 'guest@example.com', name: "ゲスト", kana:"ゲスト", prefecture:"ゲスト", telephone_number:"00000000000") do |customer|
       customer.password = SecureRandom.urlsafe_base64
       # customer.confirmed_at = Time.now  # Confirmable を使用している場合は必要
       # 例えば name を入力必須としているならば， customer.name = "ゲスト" なども必要

@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2022_09_11_073553) do
     t.string "name", null: false
     t.string "kana", null: false
     t.string "prefecture", null: false
-    t.string "telephone_namber", null: false
+    t.string "telephone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_deleted", default: false, null: false

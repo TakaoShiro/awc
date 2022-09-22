@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row pt-5">
-    <div class="col-xl-8 ml-auto">
+    <div class="mx-auto">
       <%= alert %>
     </div>
   </div>
@@ -8,13 +8,18 @@
   <div class="row pt-5">
     <div class="mx-auto col-4">
       <h5 class="bg-dark text-light text-center">ログイン</h5>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="mx-auto">
       <p class="pt-4">会員の方はこちらからログイン</p>
     </div>
   </div>
   
   <%= form_with model: @customer, url: customer_session_path do |f| %>
   <div class="row">
-    <div class="col-xl-8 ml-auto">
+    <div class="mx-auto">
       <table>
         <tr>
           <td>メールアドレス</td>
@@ -36,7 +41,7 @@
   <% end %>
     
   <div class="row pt-5">
-    <div class="col-xl-8 ml-auto">
+    <div class="mx-auto">
       <h4>会員登録がお済みでない方</h4>
       <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
     </div>

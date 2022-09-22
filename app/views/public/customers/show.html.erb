@@ -6,10 +6,10 @@
   </div>
   
   <div class="row">
-    <div class="col-md-3 text-center mt-4">
+    <div class="col-md-4 text-center mt-4">
       <%= image_tag @customer.get_image(200,300) %>
     </div>
-    <div class="col-md-6 text-left mt-4">
+    <div class="col-md-5 text-left mt-4">
         <p><%= @customer.name %></p>
         <p><%= @customer.prefecture %></p>
     </div>
@@ -45,7 +45,7 @@
   
   <% @animals.each do |animal| %>
   <div class="row">
-    <div class="col-md-3 text-center mt-4">
+    <div class="col-md-4 text-center mt-4">
       <%= image_tag animal.get_image(200,300) %>
     </div>
     <div class="col-md-2 text-left mt-4">
@@ -98,7 +98,7 @@
   
   <% @favorite_animals.each do |animal| %><br>
   <div class="row pb-2">
-    <div class="col-md-3 text-center">
+    <div class="col-md-4 text-center">
       
       <%= image_tag animal.get_image(200,300) %>
     </div>

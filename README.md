@@ -31,5 +31,8 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## ER図
+![ER図]
+
 ## 使用素材
-- 使用検討中です。
+- ![画像素材元](https://pixabay.com/ja/)

@@ -35,4 +35,4 @@
 ![ER図](https://github.com/TakaoShiro/awc/blob/main/ER%E5%9B%B3.png)
 
 ## 使用素材
-[画像素材元](https://pixabay.com/ja/)
+[画像素材元ページ](https://pixabay.com/ja/)

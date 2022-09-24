@@ -48,17 +48,19 @@
     <div class="col-md-4 mt-4">
       <%= image_tag animal.get_image(200,300) %>
     </div>
-    <div class="col-md-2 mt-4">
-      <%= link_to animal_path(animal.id) do %>
+    <div>
+      <%= link_to animal_path(animal.id), { class: "col-md-2 mt-4" } do %>
       <p>種類 : <%= animal.animal_type %></p>
       <p>性別 : <%= animal.gender %></p>
       <p>年齢 : <%= animal.age %>歳</p>
       <p>譲渡場所 : <%= animal.prefecture %></p>
+       <% end %>
     </div>
-    <div class="col-md-6 mt-4">
+      <%= link_to animal_path(animal.id), { class: "col-md-6 mt-4" } do %>
+    <div>
       <p>紹介文 : <%= animal.introduction %></p>
     </div>
-    <% end %>
+      <% end %>
     </div>
     <div class="row">
       <div class="col-12 text-center">

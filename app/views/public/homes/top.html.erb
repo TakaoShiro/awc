@@ -19,8 +19,8 @@
       <div class="row">
       <!--新着順-->
       <% @animals.each.with_index(1) do |animal, i| %>
-      <%= link_to animal_path(animal.id) do %>
-        <div class="col-3">
+      <%= link_to animal_path(animal.id), { class: "col-3" } do %>
+        <div>
           <p><%= image_tag animal.get_image(200,200) %></p>
           <p>種類 : <%= animal.animal_type %></p>
           <p>性別 : <%= animal.gender %></p>

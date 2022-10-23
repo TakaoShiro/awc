@@ -22,7 +22,8 @@
 - これから動物を飼いたい人がお気に入りのペットを探して譲り受けたい時
 
 ## 設計書
-- テーマ確定後作成予定です。
+![画面設計](https://github.com/TakaoShiro/awc/blob/main/%E7%94%BB%E9%9D%A2%E8%A8%AD%E8%A8%88.png)
+![テーブル定義書](https://github.com/TakaoShiro/awc/blob/main/%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E5%AE%9A%E7%BE%A9%E6%9B%B8.pdf)
 
 ## 開発環境
 - OS：Linux(CentOS)
